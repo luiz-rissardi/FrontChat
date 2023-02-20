@@ -1,0 +1,45 @@
+@import '../../variables.scss';
+@import '../../mixin.scss';
+
+.login{
+    img{
+        width: 100%;
+    }
+    .card{
+        width: 70%;
+        height: 70vh;
+        margin-top: 70px;
+        background-color: rgb(222, 222, 222);
+        font-family: monospace;
+        @include Breakpoint($extra-small){
+            width: 100%;
+        }
+    }
+    .image{
+        display: flex;
+        @include Breakpoint($medium){
+            display: none;
+        }
+    }
+}
+
+.loginArea{
+    background-color: $main-color;
+    @include Breakpoint($medium){
+        width: 100vw;
+    }
+}
+
+.form{
+    &-input{
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid black;
+        outline: none;
+    }
+}
+
+.invalid{
+    color: red;
+}

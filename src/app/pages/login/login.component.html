@@ -1,0 +1,33 @@
+<div class="container-fluid d-flex" style="height: 100vh;">
+    <div class="row login">
+        <section class="col-lg-6 loginArea">
+            <div class="card mx-auto p-2 p-sm-5">
+                <div class="card-body">
+                    <h1 class="mb-5">Login</h1>
+                    <form [formGroup]="form" novalidate (submit)="logar()">
+                        <fieldset class="form-group">
+                            <label for="email" class="form-label">email</label>
+                            <input type="email" id="emailId" formControlName="email" class="form-input" (change)="validEmail = true">
+                                <span class="invalid" *ngIf="form.controls['email'].errors?.required && submit">
+                                    campo requerido
+                                </span>
+                                <span class="invalid" *ngIf="!validEmail && !form.controls['email'].errors?.required">
+                                    email invalido
+                                </span>
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <label for="password" class="form-label">senha</label>
+                            <input type="password" id="senhaId" formControlName="senha" class="form-input">
+                        </fieldset>
+                        <fieldset class="form-group d-flex">
+                            <button type="submit" class=" btn btn-primary my-3 w-100"> enviar </button>
+                        </fieldset>                    
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="col-lg-6 image">
+            <img class="m-auto" src="../../../assets/images/concept-illustration-of-man-and-woman-friends-having-online-conversation-messaging-chatting-communication-texting-messages-in-mobile-phone-apps-flat-cartoon-style-free.png" alt="">
+        </section>
+    </div>
+</div>
