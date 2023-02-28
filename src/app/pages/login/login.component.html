@@ -4,7 +4,9 @@
             <div class="card mx-auto p-2 p-sm-5">
                 <div class="card-body">
                     <h1 class="mb-5">Login</h1>
-                    <form [formGroup]="form" novalidate (submit)="logar()">
+                    <form [formGroup]="form" class="g5" novalidate (submit)="logar()">
+                        <span class="invalid d-flex mx-auto" *ngIf="this.usuario === undefined && !this.toManyRequest">email ou senha incorretos</span>
+                        <span class="invalid d-flex text-center" *ngIf="this.toManyRequest">muitas tentaivas, tente novamente mais tarde</span>
                         <fieldset class="form-group">
                             <label for="email" class="form-label">email</label>
                             <input type="email" id="emailId" formControlName="email" class="form-input" (change)="validEmail = true">
@@ -18,9 +20,18 @@
                         <fieldset class="form-group">
                             <label for="password" class="form-label">senha</label>
                             <input type="password" id="senhaId" formControlName="senha" class="form-input">
+                            <span class="invalid" *ngIf="form.controls['senha'].errors?.required && submit">
+                                campo requerido
+                            </span>
                         </fieldset>
-                        <fieldset class="form-group d-flex">
-                            <button type="submit" class=" btn btn-primary my-3 w-100"> enviar </button>
+                        <fieldset class="form-group d-flex my-3">
+                            <label for="remenberMe" class="form-label me-3">remenber me</label>
+                            <input type="checkbox" class="form-check-input">
+                            <a href="#" *ngIf="this.usuario === undefined" class="ms-auto">redefinir senha</a>
+                        </fieldset>
+                        <fieldset class="form-group gap-3 d-flex">
+                            <button type="submit" class="btn btn-primary my-3 w-50"> Login </button>
+                            <button type="button" class="btn btn-outline-primary my-3 w-50" routerLink="/singUp"> Sing-Up</button>
                         </fieldset>                    
                     </form>
                 </div>

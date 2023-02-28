@@ -1,0 +1,28 @@
+
+<div class="container-fluid d-flex">
+    <div class="cardlogin p-1 m-auto my-5">
+        <h1 class="text-center"> Sing Up</h1>
+        <form [formGroup]="Form" class="d-grid gap-3 m-5">
+            <fieldset class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-input" formControlName="email">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="password" class="form-label">password</label>
+                <input type="password" class="form-input" formControlName="password">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="nome" class="form-label">nome</label>
+                <input type="text" class="form-input" formControlName="nome">
+            </fieldset>
+            <fieldset class="form-group">
+                <label for="phone" class="form-label">phone</label>
+                <input type="number" class="form-input" formControlName="phone">
+            </fieldset>
+
+            <button type="button" class="btn btn-outline-secondary" (click)="Cadastar()">
+                SingUp
+            </button>
+        </form>  
+    </div>
+</div>

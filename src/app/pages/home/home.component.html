@@ -1,1 +1,45 @@
-<p>home works!</p>
+<div class="container-fluid p-0">
+    <header class="header d-flex">
+        <button class="btn btn-primary my-auto ms-5" (click)="open(ModalAddContact)" >
+            add contact
+        </button>
+    </header>
+    <div class="row ChatMain">
+        <section class="col-12 col-sm-4 contacts">
+            <ul *ngIf="this.Usuario?.chats">
+                <li *ngFor="let item of this.Usuario.chats">
+                    <button class="btn btn-secondary" (click)="this.getChat(item.chatId,item.person.phone)">
+                        <h6> {{item?.person?.nome || "louyiz"}} </h6>
+                    </button>
+                </li>
+            </ul>
+        </section>
+        <section class="col-8 d-none d-sm-flex">
+            <app-chat class="w-100" *ngIf="this.Chat" [chat]="this.Chat"></app-chat>
+            <fieldset class="form-group sendInput d-flex ">
+                <input type="text" class="form-control" #messeger>
+                <button type="button" class="btn btn-primary px-5 py-2 mx-5" (click)="sendMessage(messeger.value)"> Enviar </button>
+            </fieldset>
+        </section>
+    </div>
+</div>
+
+
+<ng-template #ModalAddContact let-modal let-c="close" let-d="dismiss"> 
+    <div class="modal-header">
+        <button type="button" class="btn-close" (click)="d()"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="Form">
+            <fieldset class="form-group">
+                <label for="telefone"> Informe o telefone a adicionar:</label>
+                <input type="text" class="form-control" formControlName="phone1">
+            </fieldset>
+        </form>
+    </div>
+    <div class="card-footer p-3">
+        <fieldset class="form-group d-flex">
+            <button class="btn btn-primary mx-auto" (click)="addContact()"> adicionar </button>
+        </fieldset>
+    </div>
+</ng-template>

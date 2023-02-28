@@ -1,0 +1,24 @@
+@import "../../mixin.scss";
+@import "../../variables.scss";
+
+.contacts{
+    height: 100vh;
+    border-right: 1px solid black;
+}
+
+.header{
+    height: 20vh;
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.ChatMain{
+    height: 100vh !important;
+    background-color: gray;
+}
+
+.sendInput{
+    position: absolute;
+    width: 50%;
+    top: 90%;
+}

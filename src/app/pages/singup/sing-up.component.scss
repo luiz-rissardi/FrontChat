@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+@import '../../mixin.scss';
+
+
+.container-fluid{
+    background-color: $main-color;
+    height: 100vh;
+}
+
+.cardlogin{
+    background-color:  rgb(222, 222, 222);
+}
+
+.form{
+    &-input{
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid black;
+        outline: none;
+    }
+}

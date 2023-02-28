@@ -9,14 +9,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FetchApiService } from './core/fetch-api.service';
-import { ValidateForm } from './share/class/validate';
+import { FetchApiService } from './core/fetch/fetch-api.service';
+import { ValidateForm } from './share/validation/validate';
+import { ChatComponent } from './share/Components/chat/chat.component';
+import { SingUpComponent } from './pages/singup/sing-up.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    ChatComponent,
+    SingUpComponent,
   ],
   imports: [
     BrowserModule,

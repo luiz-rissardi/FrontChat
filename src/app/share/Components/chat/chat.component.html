@@ -1,0 +1,12 @@
+
+
+<ul class="messageArea">
+    <li *ngFor="let item of this.chat.chat[0].chats" class="d-flex" style="list-style: none;">
+        <div *ngIf="item[this.chat.phoneUser]" class="userMessage message my-3 p-3">
+            <p> {{this.chat.phoneUser}} : {{item[this.chat.phoneUser]}} </p>
+        </div>
+        <div *ngIf="item[this.chat.yourphone]" class="yourMessage my-3 message p-3 ms-auto" style="background-color: blue;">
+            <p> {{this.chat.yourphone}} : {{item[this.chat.yourphone]}} </p>
+        </div>
+    </li>
+</ul>
