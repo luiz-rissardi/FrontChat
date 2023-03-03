@@ -1,24 +1,51 @@
 @import "../../mixin.scss";
 @import "../../variables.scss";
 
+*{
+    max-width: 100%;
+}
+
 .contacts{
-    height: 100vh;
     border-right: 1px solid black;
+    overflow-y: scroll;
 }
 
 .header{
-    height: 20vh;
+    height: 10vh;
     width: 100%;
     border-bottom: 1px solid black;
 }
 
+#chats{
+    position: relative;
+}
+
 .ChatMain{
-    height: 100vh !important;
+    height: 100vh;
+    padding: 0;
     background-color: gray;
 }
+
+.topMenu{
+    width: 100%;
+    height: 10vh;
+    background-color: red;
+}
+
+.row > * {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
 
 .sendInput{
     position: absolute;
     width: 50%;
     top: 90%;
+}
+
+.col-8{
+    @include Breakpoint(560px){
+        width: 100% !important;
+    }
 }
