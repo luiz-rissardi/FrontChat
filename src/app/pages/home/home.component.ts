@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
       transports: ['websocket']
     })
 
-    this.SocketClient = io("http://localhost:3000", {
+    this.SocketClient = io("https://apichat.herokuapp.com/", {
       transports: ['websocket']
     });
 
@@ -82,14 +82,9 @@ export class HomeComponent implements OnInit {
       console.log(window.screen.width)
       this.Chat.yourphone = this.Usuario.phone;
       if (window.screen.width < 560) {
-        const dom = document.getElementById("chats")
-        if (dom) {
-          dom.classList.remove("col-8")
-          dom.style.position = "absolute";
-          dom.style.width = "100%";
-          this.mobileon = true
-        }
+         this.mobileon = true
       }
+      console.log(this.mobileon)
     })
   }
 
