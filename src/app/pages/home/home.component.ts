@@ -79,7 +79,6 @@ export class HomeComponent implements OnInit {
     this.ApiChat.getchat(chatId).subscribe((data: any) => {
       this.Chat = data;
       this.Chat.phoneUser = Number(phoneUser);
-      console.log(window.screen.width)
       this.Chat.yourphone = this.Usuario.phone;
       if (window.screen.width < 560) {
          this.mobileon = true
@@ -91,29 +90,33 @@ export class HomeComponent implements OnInit {
   addContact() {
     const phone1 = this.Usuario.phone;
     const phone2 = Number(this.Form.get("phone1")?.value);
-    this.ApiChat.CreateChat().subscribe((chatId: any) => {
-      if (chatId.id) {
-        this.ApiService.InitChat(phone1, phone2, chatId.id).subscribe(data => {
-          console.log("usuario =>", this.Usuario)
-          console.log("data =>", data)
-          this.Usuario = data.dados;
-          const chatUser = {
-            chatId: chatId.id,
-            person: {
-              nome: this.Usuario.nome,
-              phone: this.Usuario.phone
-            },
-            dateDelet: null
-          }
-          this.SocketClient.emit("newChat", chatUser, phone2)
-          this.ApiChat.getchat(chatId).subscribe((data: any) => {
-            this.Chat = data;
-            this.Chat.phoneUser = Number(phone2);
-            this.Chat.yourphone = this.Usuario.phone;
+    if(phone2 == undefined){
+      this.ApiChat.CreateChat().subscribe((chatId: any) => {
+        if (chatId.id) {
+          this.ApiService.InitChat(phone1, phone2, chatId.id).subscribe(data => {
+            console.log("usuario =>", this.Usuario)
+            console.log("data =>", data)
+            this.Usuario = data.dados;
+            const chatUser = {
+              chatId: chatId.id,
+              person: {
+                nome: this.Usuario.nome,
+                phone: this.Usuario.phone
+              },
+              dateDelet: null
+            }
+            this.SocketClient.emit("newChat", chatUser, phone2)
+            this.ApiChat.getchat(chatId).subscribe((data: any) => {
+              this.Chat = data;
+              this.Chat.phoneUser = Number(phone2);
+              this.Chat.yourphone = this.Usuario.phone;
+            })
           })
-        })
-      }
-    })
+        }
+      })
+    }else{
+      console.log("vazio")
+    }
   }
 
   sendMessage(message: string) {
